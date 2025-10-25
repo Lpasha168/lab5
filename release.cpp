@@ -154,7 +154,7 @@ void day_of_the_week() {
 		bool visyear1 = (year1 % 4 == 0 && year1 % 100 != 0) || (year1 % 400 == 0);
 		bool visyear2 = (year2 % 4 == 0 && year2 % 100 != 0) || (year2 % 400 == 0);
 		if (visyear1 && mo1 > 2) {
-			start1 = (sumdays1 + day1);
+			start1 = (sumdays1 + day1) + 1;
 			daynedeli1 = (dow1 + (sumdays1 + day1)) % 7;
 			if (daynedeli1 == 0) daynedeli1 = 7;
 		}
@@ -220,7 +220,7 @@ void day_of_the_week() {
 			break;
 		}
 		if (visyear2 && mo2 > 2) {
-			start2 = (sumdays2 + day2);
+			start2 = (sumdays2 + day2) + 1;
 			daynedeli2 = (dow2 + (sumdays2 + day2)) % 7;
 			if (daynedeli2 == 0) daynedeli2 = 7;
 		}
@@ -307,9 +307,10 @@ void daysdiff() {
 		fulldiff = abs(start1 - start2);
 	}
 	if (cor == true) {
-	std::cout << fulldiff << std::endl;
+	std::cout << "Date difference - " << fulldiff << std::endl;
 	}	
 }
 }
+
 
 
