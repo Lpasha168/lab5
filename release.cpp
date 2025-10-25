@@ -5,7 +5,7 @@ short base = 2024;
 short yd1, vesk1, dow1, smewenie1, wd1, yd2, vesk2, dow2, smewenie2, wd2, sumdays1, sumdays2, start1, start2;
 short mo1, year1, day1;
 short mo2, year2, day2;
-short daynedeli1, daynedeli2, max1, max2, dydf, yrdf, vyr, fulldiff;
+short daynedeli1, daynedeli2, max1, max2, dydf, yrdf, vyr;
 bool visyear1, visyear2;
 bool cor = true;
 void correct() {
@@ -100,10 +100,10 @@ void day_of_the_week() {
 		if (base > year1) {
 			smewenie1 = (yd1 - vesk1) + (vesk1 * 2);
 			wd1 = smewenie1 % 7;
-			dow1 = (7 - wd1) + 1;
+			dow1 = (7 - wd1) ;
 		}
 		else if (base < year1) {
-			smewenie1 = (yd1 - vesk1) + (vesk1 * 2) + 1;
+			smewenie1 = (yd1 - vesk1) + (vesk1 * 2);
 			wd1 = smewenie1 % 7;
 			dow1 = (1 + wd1);
 		}
@@ -154,13 +154,13 @@ void day_of_the_week() {
 		bool visyear1 = (year1 % 4 == 0 && year1 % 100 != 0) || (year1 % 400 == 0);
 		bool visyear2 = (year2 % 4 == 0 && year2 % 100 != 0) || (year2 % 400 == 0);
 		if (visyear1 && mo1 > 2) {
-			start1 = (sumdays1 + day1) + 1;
+			start1 = (sumdays1 + day1);
 			daynedeli1 = (dow1 + (sumdays1 + day1)) % 7;
 			if (daynedeli1 == 0) daynedeli1 = 7;
 		}
 		else {
 			start1 = (sumdays1 + day1);
-			daynedeli1 = (dow1 + (sumdays1 + day1 - 1)) % 7;
+			daynedeli1 = (dow1 + (sumdays1 + day1)) % 7;
 			if (daynedeli1 == 0) daynedeli1 = 7;
 		}
 		yd2 = abs(year2 - base);
@@ -171,9 +171,9 @@ void day_of_the_week() {
 			dow2 = (7 - wd2) + 1;
 		}
 		else if (base < year2) {
-			smewenie2 = (yd2 - vesk2) + (vesk2 * 2) + 1;
+			smewenie2 = (yd2 - vesk2) + (vesk2 * 2);
 			wd2 = smewenie2 % 7;
-			dow2 = (1 + wd2);
+			dow2 = (1 + wd2) + 1;
 		}
 		if (base == year2) {
 			dow2 = 1;
@@ -220,14 +220,13 @@ void day_of_the_week() {
 			break;
 		}
 		if (visyear2 && mo2 > 2) {
-			start2 = (sumdays2 + day2) + 1;
+			start2 = (sumdays2 + day2);
 			daynedeli2 = (dow2 + (sumdays2 + day2)) % 7;
 			if (daynedeli2 == 0) daynedeli2 = 7;
 		}
 		else {
 			start2 = (sumdays2 + day2);
-			
-			daynedeli2 = (dow2 + (sumdays2 + day2 - 1)) % 7;
+			daynedeli2 = (dow2 + (sumdays2 + day2)-1) % 7;
 			if (daynedeli2 == 0) daynedeli2 = 7;
 		}
 		switch (daynedeli1) {
@@ -235,7 +234,7 @@ void day_of_the_week() {
 			std::cout << "First date" << " - Monday" << std::endl;
 			break;
 		case 2:
-			std::cout << "First date" << " - Thusday" << std::endl;
+			std::cout << "First date" << " - Tuesday" << std::endl;
 			break;
 		case 3:
 			std::cout << "First date" << " - Wednesday" << std::endl;
@@ -258,7 +257,7 @@ void day_of_the_week() {
 			std::cout << "Second date" << " - Monday" << std::endl;
 			break;
 		case 2:
-			std::cout << "Second date" << " - Thusday" << std::endl;
+			std::cout << "Second date" << " - Tuesday" << std::endl;
 			break;
 		case 3:
 			std::cout << "Second date" << " - Wednesday" << std::endl;
@@ -281,6 +280,7 @@ void day_of_the_week() {
 	
 }
 void daysdiff() {
+	int fulldiff;
 	if (year1 != year2) {
 		if (year1 > year2) {
 			short leapc = 0;
