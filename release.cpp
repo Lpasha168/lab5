@@ -308,6 +308,7 @@ void daysdiff() {
 	}
 	if (cor == true) {
 	std::cout << fulldiff << std::endl;
+	}	
 }
 }
 
