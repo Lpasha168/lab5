@@ -11,7 +11,7 @@ bool cor = true;
 void correct() {
 	std::cout << "First date (Ex: 5 2 2012): " << std::endl;
 	std::cin >> day1 >> mo1 >> year1;
-	std::cout << "Secon date (Ex: 3 11 2012): " << std::endl;;
+	std::cout << "Second date (Ex: 3 11 2012): " << std::endl;;
 	std::cin >> day2 >> mo2 >> year2;
 	if ((mo1 < 1) || (mo1 > 12) || (mo1 < 1) || (mo1 > 12)) {
 		std::cout << "Incorrect month input" << std::endl;
@@ -306,6 +306,8 @@ void daysdiff() {
 	else {
 		fulldiff = abs(start1 - start2);
 	}
+	if (cor == true) {
 	std::cout << fulldiff << std::endl;
 }
 }
+
